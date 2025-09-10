@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sai Charan - Physiotherapy & Rehabilitation Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            primary: '#0d4f8c',
+                            secondary: '#1e88e5',
+                            accent: '#4fc3f7',
+                            light: '#e3f2fd',
+                            dark: '#0a3a63'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0d4f8c 0%, #1e88e5 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #1e88e5;
+        }
+        .section-title.center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .experience-badge {
+            position: relative;
+            overflow: hidden;
+        }
+        .experience-badge:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+            z-index: 1;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1e88e5;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .service-icon {
+            background: linear-gradient(135deg, #0d4f8c 0%, #1e88e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        .doctor-image {
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        .doctor-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .profile-frame {
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-medical-primary flex items-center justify-center text-white font-bold">SC</div>
+                    <span class="ml-3 text-xl font-semibold text-medical-dark">Dr. Sai Charan</span>
+                </div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="#home" class="nav-link text-medical-dark font-medium">Home</a>
+                    <a href="#about" class="nav-link text-medical-dark font-medium">About</a>
+                    <a href="#services" class="nav-link text-medical-dark font-medium">Services</a>
+                    <a href="#experience" class="nav-link text-medical-dark font-medium">Experience</a>
+                    <a href="#contact" class="nav-link text-medical-dark font-medium">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-medical-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pt-2 pb-4 shadow-lg">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="nav-link text-medical-dark font-medium py-2">Home</a>
+                <a href="#about" class="nav-link text-medical-dark font-medium py-2">About</a>
+                <a href="#services" class="nav-link text-medical-dark font-medium py-2">Services</a>
+                <a href="#experience" class="nav-link text-medical-dark font-medium py-2">Experience</a>
+                <a href="#contact" class="nav-link text-medical-dark font-medium py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="gradient-bg text-white pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Doctor Info -->
+                <div class="lg:w-2/3 text-center lg:text-left fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Dr. Sai Charan</h1>
+                    <div class="text-xl mb-6 text-blue-100">
+                        <span class="bg-white/20 px-4 py-2 rounded-full">BPT, MPT (NEURO)</span>
+                    </div>
+                    <p class="text-xl text-blue-100 mb-8 max-w-2xl">Specialized in neurological physiotherapy and rehabilitation with a patient-centered approach to restore function and improve quality of life.</p>
+                    
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
+                        <div class="experience-badge bg-white/10 px-6 py-3 rounded-lg">
+                            <span class="text-sm block">Experience</span>
+                            <div class="font-bold text-xl">4+ Years</div>
+                        </div>
+                        <div class="experience-badge bg-white/10 px-6 py-3 rounded-lg">
+                            <span class="text-sm block">Specialization</span>
+                            <div class="font-bold text-xl">MPT Neurology</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
+                        <span class="bg-white text-medical-primary px-4 py-2 rounded-full text-sm font-medium">Telugu</span>
+                        <span class="bg-white text-medical-primary px-4 py-2 rounded-full text-sm font-medium">English</span>
+                        <span class="bg-white text-medical-primary px-4 py-2 rounded-full text-sm font-medium">Hindi</span>
+                    </div>
+                    
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                        <a href="#contact" class="bg-white text-medical-primary px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                            Book Consultation
+                        </a>
+                        <a href="#services" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-medical-primary transition-colors">
+                            View Services
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Doctor Profile Image -->
+                <div class="lg:w-1/3 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden profile-frame border-4 border-white shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                 alt="Dr. Sai Charan" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white text-medical-primary px-4 py-2 rounded-full shadow-md font-semibold">
+                            Specialist in Neurology
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 text-medical-primary section-title center">About Me</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">Dedicated physiotherapist with specialized expertise in neurological rehabilitation</p>
+            
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2">
+                    <div class="bg-medical-light p-8 rounded-2xl shadow-lg">
+                        <p class="text-gray-700 text-lg mb-6">
+                            I am Dr. Sai Charan, a passionate physiotherapist specializing in neurological conditions. 
+                            With my Master's in Physiotherapy (Neurology), I am committed to helping patients regain 
+                            their functional abilities and improve their quality of life.
+                        </p>
+                        <p class="text-gray-700 text-lg mb-6">
+                            My approach combines evidence-based treatments with personalized care plans tailored 
+                            to each patient's unique needs. I believe in a holistic approach to rehabilitation that 
+                            addresses not just physical symptoms but also emotional and psychological well-being.
+                        </p>
+                        <p class="text-gray-700 text-lg">
+                            Fluent in Telugu, English, and Hindi, I ensure clear communication and understanding 
+                            with all patients throughout their treatment journey.
+                        </p>
+                    </div>
+                    
+                    <!-- Doctor working image -->
+                    <div class="mt-8 rounded-2xl overflow-hidden doctor-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                             alt="Dr. Sai Charan working with a patient" class="w-full h-64 object-cover">
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-gradient-to-br from-medical-light to-white p-6 rounded-xl shadow-md card-hover">
+                            <div class="text-medical-primary text-3xl mb-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-medical-dark">Education</h3>
+                            <p class="text-gray-600">BPT & MPT in Neurology from recognized institutions</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-medical-light to-white p-6 rounded-xl shadow-md card-hover">
+                            <div class="text-medical-primary text-3xl mb-4">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-medical-dark">Certifications</h3>
+                            <p class="text-gray-600">Licensed practitioner with specialized training in neurological rehabilitation</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-medical-light to-white p-6 rounded-xl shadow-md card-hover">
+                            <div class="text-medical-primary text-3xl mb-4">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-medical-dark">Philosophy</h3>
+                            <p class="text-gray-600">Patient-centered care with emphasis on functional recovery</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-medical-light to-white p-6 rounded-xl shadow-md card-hover">
+                            <div class="text-medical-primary text-3xl mb-4">
+                                <i class="fas fa-people-arrows"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-medical-dark">Approach</h3>
+                            <p class="text-gray-600">Combining traditional methods with modern evidence-based techniques</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor in clinic image -->
+                    <div class="mt-8 rounded-2xl overflow-hidden doctor-image">
+                        <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                             alt="Dr. Sai Charan in clinic" class="w-full h-64 object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-medical-light">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 text-medical-primary section-title center">Services Offered</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">Comprehensive physiotherapy and rehabilitation services tailored to individual needs</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-medical-primary">Neurological Rehabilitation</h3>
+                    <p class="text-gray-600">Comprehensive treatment for stroke, Parkinson's, spinal cord injuries, and other neurological conditions</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="service-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-medical-primary">Orthopedic Physiotherapy</h3>
+                    <p class="text-gray-600">Expert care for joint replacements, fractures, arthritis, and musculoskeletal disorders</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="service-icon">
+                        <i class="fas fa-wheelchair"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-medical-primary">Geriatric Care</h3>
+                    <p class="text-gray-600">Specialized programs for elderly patients to improve mobility, balance, and independence</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="service-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-medical-primary">Pediatric Physiotherapy</h3>
+                    <p class="text-gray-600">Gentle and effective treatment for children with developmental delays and conditions</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="service-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-medical-primary">Balance Training</h3>
+                    <p class="text-gray-600">Specialized programs to improve stability, prevent falls, and enhance coordination</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-medical-primary">Cardiac Rehabilitation</h3>
+                    <p class="text-gray-600">Supervised exercises and education for patients with heart conditions</p>
+                </div>
+            </div>
+            
+            <!-- Treatment session image -->
+            <div class="mt-12 max-w-4xl mx-auto rounded-2xl overflow-hidden doctor-image">
+                <img src="https://images.unsplash.com/photo-1590402494610-2c7a0d599afd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Physiotherapy session" class="w-full h-64 object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 text-medical-primary section-title center">Professional Experience</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">4+ years of dedicated service in physiotherapy and rehabilitation</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-5 md:left-1/2 h-full w-1 bg-medical-primary transform -translate-x-1/2"></div>
+                    
+                    <!-- Timeline items -->
+                    <div class="space-y-12">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/2 md:pr-12 md:text-right">
+                                <h3 class="text-xl font-semibold text-medical-primary">Neurology Specialist</h3>
+                                <p class="text-medical-secondary">2021 - Present</p>
+                            </div>
+                            <div class="flex justify-center md:justify-start">
+                                <div class="w-4 h-4 rounded-full bg-medical-primary z-10"></div>
+                            </div>
+                            <div class="md:w-1/2 md:pl-12">
+                                <p class="text-gray-600">Specializing in stroke rehabilitation, Parkinson's disease management, and spinal cord injury recovery at leading healthcare facilities.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/2 md:pr-12 md:text-right">
+                                <h3 class="text-xl font-semibold text-medical-primary">Senior Physiotherapist</h3>
+                                <p class="text-medical-secondary">2019 - 2021</p>
+                            </div>
+                            <div class="flex justify-center md:justify-start">
+                                <div class="w-4 h-4 rounded-full bg-medical-primary z-10"></div>
+                            </div>
+                            <div class="md:w-1/2 md:pl-12">
+                                <p class="text-gray-600">Worked with diverse patient populations, developing comprehensive treatment plans for orthopedic and neurological conditions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/2 md:pr-12 md:text-right">
+                                <h3 class="text-xl font-semibold text-medical-primary">Clinical Internship</h3>
+                                <p class="text-medical-secondary">2018 - 2019</p>
+                            </div>
+                            <div class="flex justify-center md:justify-start">
+                                <div class="w-4 h-4 rounded-full bg-medical-primary z-10"></div>
+                            </div>
+                            <div class="md:w-1/2 md:pl-12">
+                                <p class="text-gray-600">Completed intensive training in multidisciplinary rehabilitation settings, gaining hands-on experience with various patient cases.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor with patient image -->
+            <div class="mt-12 max-w-4xl mx-auto rounded-2xl overflow-hidden doctor-image">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Dr. Sai Charan with a patient" class="w-full h-64 object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas Section -->
+    <section class="py-16 bg-medical-light">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 text-medical-primary section-title center">Service Areas</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">Providing quality physiotherapy services across Hyderabad</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover">
+                    <div class="text-medical-primary text-2xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-medical-primary text-lg">Suncity</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover">
+                    <div class="text-medical-primary text-2xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-medical-primary text-lg">Bandlaguda Jagir</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover">
+                    <div class="text-medical-primary text-2xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-medical-primary text-lg">Kalimandir</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover">
+                    <div class="text-medical-primary text-2xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-medical-primary text-lg">Kismathpur</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover">
+                    <div class="text-medical-primary text-2xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-medical-primary text-lg">Narsingi</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center card-hover">
+                    <div class="text-medical-primary text-2xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-medical-primary text-lg">Langerhouse</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 section-title center">Contact Information</h2>
+            <p class="text-blue-100 text-center max-w-3xl mx-auto mb-12">Reach out to schedule an appointment or consultation</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white/10 p-8 rounded-xl card-hover">
+                        <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-phone-alt text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-center">Phone</h3>
+                        <a href="tel:9550836548" class="text-blue-200 hover:text-white text-xl transition-colors block text-center">
+                            <i class="fas fa-phone mr-2"></i> 9550836548
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white/10 p-8 rounded-xl card-hover">
+                        <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-center">Email</h3>
+                        <a href="mailto:dubasisaicharan@gmail.com" class="text-blue-200 hover:text-white transition-colors break-all text-center block">
+                            <i class="fas fa-envelope mr-2"></i> dubasisaicharan@gmail.com
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold mb-6">Ready to Begin Your Recovery Journey?</h3>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="tel:9550836548" class="bg-white text-medical-primary px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center">
+                            <i class="fas fa-phone mr-2"></i> Call Now
+                        </a>
+                        <a href="https://wa.me/919550836548" class="bg-green-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-600 transition-colors flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                        <a href="mailto:dubasisaicharan@gmail.com" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-medical-primary transition-colors flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i> Send Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-medical-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Dr. Sai Charan</h3>
+                    <p class="text-blue-100">Specialized physiotherapy and rehabilitation services with a focus on neurological conditions and functional recovery.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-blue-100 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-blue-100 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#services" class="text-blue-100 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#contact" class="text-blue-100 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect With Me</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-medical-primary flex items-center justify-center hover:bg-medical-secondary transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-medical-primary flex items-center justify-center hover:bg-medical-secondary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-medical-primary flex items-center justify-center hover:bg-medical-secondary transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://wa.me/919550836548" class="w-10 h-10 rounded-full bg-medical-primary flex items-center justify-center hover:bg-medical-secondary transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-blue-100">
+                <p>&copy; 2025 Dr. Sai Charan. All rights reserved.</p>
+                <p class="mt-2">Providing quality healthcare and rehabilitation services across Hyderabad</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation to elements when they come into view
+        function checkVisibility() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initial check and add scroll listener
+        window.addEventListener('load', checkVisibility);
+        window.addEventListener('scroll', checkVisibility);
+
+        // Initialize elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+
+        // Initial check
+        setTimeout(checkVisibility, 100);
+    </script>
+</body>
+</html>
